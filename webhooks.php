@@ -1,12 +1,13 @@
 <?php
 /**
  *git webhook 自动部署脚本
+ *
  */
 
 //接收post参数
 $requestBody = file_get_contents("php://input");
 if (empty($requestBody)) {
-    exit('data null');
+    exit('data null！');
 }
 $content = json_decode($requestBody, true);
 
@@ -15,7 +16,7 @@ $content = json_decode($requestBody, true);
 //	exit('password error');
 //}
 
-$path = "/www/wwwroot/39.96.73.167/"; //项目存放物理路径
+$path = "/www/wwwroot/39.96.73.167/guide-webhooks/"; //项目存放物理路径
 
 //判断master分支上是否有提交
 if ($content['ref'] == 'refs/heads/main') {
