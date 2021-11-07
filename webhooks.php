@@ -24,7 +24,7 @@ $path = "/www/wwwroot/39.96.73.167/guide-webhooks/";
 // 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
 if ($content['ref'] == 'refs/heads/main') {
 
-    // 执行pull代码脚本
+    // 执行脚本 git pull，拉取分支最新代码
     $res = shell_exec("cd {$path} && git pull origin main 2>&1"); // 当前为www用户
 
     // 记录日志 ($content 返回的是一整个对象，可以按需获取里面的内容，写入日志)
