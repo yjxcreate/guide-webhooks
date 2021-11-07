@@ -9,31 +9,31 @@ $requestBody = file_get_contents("php://input");
 if (empty($requestBody)) {
     exit('data null！');
 }
+
+// Content type = application/json
 $content = json_decode($requestBody, true);
 
-// 验证密码,验证码云上配置的webhook密码
-//if (empty($content['password']) || $content['password'] != 'password') //{
-//	exit('password error');
-//}
+// 验证 Webhooks 配置的 Secret，也可以不验证
+/*if (empty($content['password']) || $content['password'] != '123456') {
+	exit('password error');
+}*/
 
-$path = "/www/wwwroot/39.96.73.167/guide-webhooks/"; //项目存放物理路径
+// 项目存放物理路径，也就是站点的访问地址
+$path = "/www/wwwroot/39.96.73.167/guide-webhooks/";
 
-//判断master分支上是否有提交
+// 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
 if ($content['ref'] == 'refs/heads/main') {
 
+    // 执行pull代码脚本
     $res = shell_exec("cd {$path} && git pull origin main 2>&1"); // 当前为www用户
 
+    // 记录日志 ($content 返回的是一整个对象，可以按需获取里面的内容，写入日志)
     $res_log = '------------------------->' . PHP_EOL;
-    $res_log .= '用户' . $content['user_name'] . ' 于' . date('Y-m-d H:i:s') . '向' . $content['repository']['name'] . '项目的' . $content['ref'] . '分支push了' . $content['total_commits_count'] . '个commit：' . PHP_EOL;
+    $res_log .= '用户 ' . $content['commits']['committer']['name'] . ' 于 ' . date('Y-m-d H:i:s') . '向项目【' . $content['repository']['name'] . '】分支【' . $content['ref'] . '】PUSH ' . $content['commits']['message'] . PHP_EOL;
     $res_log .= $res . PHP_EOL;
 
-    $x = file_put_contents("git_webhook_log.txt", $res_log, FILE_APPEND);//追加写入日志文件
-
-    if ($x) {
-        echo 'true-';
-    } else {
-        echo 'false-';
-    }
+    // 追加方式，写入日志文件
+    file_put_contents("git_webhook_log.txt", $res_log, FILE_APPEND);
 }
 echo 'done';
 
