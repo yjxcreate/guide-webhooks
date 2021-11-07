@@ -1,8 +1,10 @@
 <?php
 /**
  *git webhook 自动部署脚本
- *
  */
+
+exec("cd ~ && cd - && cd -", $output);
+print_r($output);
 
 //接收post参数
 $requestBody = file_get_contents("php://input");
