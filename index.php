@@ -4,7 +4,7 @@ ini_set("error_reporting", "E_ALL & ~E_NOTICE");
 
 echo "Hi，webhooks HelloWorld！By 小傅哥";
 
-echo "<br/>";
+echo '<br/>输出项目路径和用户目录：<br/>';
 
 exec("cd ~ && cd - && cd -", $output);
 
