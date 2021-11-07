@@ -1,19 +1,20 @@
 <?php
 /**
- *git webhook 自动部署脚本
+ * Git webhooks 自动部署脚本
+ * 地址：https://github.com/fuzhengwei/guide-webhooks/settings/hooks
  */
 
 exec("cd ~ && cd - && cd -", $output);
 print_r($output);
 
-//接收post参数
+// 接收post参数
 $requestBody = file_get_contents("php://input");
 if (empty($requestBody)) {
     exit('data null！');
 }
 $content = json_decode($requestBody, true);
 
-//验证密码,验证码云上配置的webhook密码
+// 验证密码,验证码云上配置的webhook密码
 //if (empty($content['password']) || $content['password'] != 'password') //{
 //	exit('password error');
 //}
