@@ -29,7 +29,7 @@ if ($content['ref'] == 'refs/heads/main') {
 
     // 记录日志 ($content 返回的是一整个对象，可以按需获取里面的内容，写入日志)
     $res_log = '------------------------->' . PHP_EOL;
-    $res_log .= '用户 ' . $content['commits']['committer']['name'] . ' 于 ' . date('Y-m-d H:i:s') . '向项目【' . $content['repository']['name'] . '】分支【' . $content['ref'] . '】PUSH ' . $content['commits']['message'] . PHP_EOL;
+    $res_log .= '用户 ' . $content['pusher']['name'] . ' 于 ' . date('Y-m-d H:i:s') . ' 向项目【' . $content['repository']['name'] . '】分支【' . $content['ref'] . '】PUSH ' . $content['commits']['message'] . PHP_EOL;
     $res_log .= $res . PHP_EOL;
 
     // 追加方式，写入日志文件
