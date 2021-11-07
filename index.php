@@ -7,4 +7,4 @@ echo "Hi，webhooks HelloWorld！By 小傅哥";
 echo "<br/>";
 
 exec("cd ~ && cd - && cd -", $output);
-echo $output;
+print_r($output);
