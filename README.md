@@ -1,5 +1,8 @@
 # guide-webhooks - 自动部署博客，教程文档
 
+- 详细文档：[https://mp.weixin.qq.com/s/VtTHUfyiITNSoGy052jkXQ](https://mp.weixin.qq.com/s/VtTHUfyiITNSoGy052jkXQ)
+- 视频教程：[https://www.bilibili.com/video/BV11S4y1d7hS/](https://www.bilibili.com/video/BV11S4y1d7hS/)
+
 ## 操作步骤
 
 1. 安装Git：`yum -y install git`
@@ -10,5 +13,3 @@
 6. 配置公钥：https://github.com/settings/ssh/new 
 7. 克隆站点：`git@github.com:fuzhengwei/guide-webhooks.git`
 8. 配置 webhooks，在Github对应的代码库上
-
-
