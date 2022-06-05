@@ -13,3 +13,4 @@
 6. 配置公钥：https://github.com/settings/ssh/new 
 7. 克隆站点：`git@github.com:fuzhengwei/guide-webhooks.git`
 8. 配置 webhooks，在Github对应的代码库上
+9. 66545656511
